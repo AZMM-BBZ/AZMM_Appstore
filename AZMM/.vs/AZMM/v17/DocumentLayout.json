@@ -1,71 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\dev\\AZMM-BBZ\\AZMM\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{20E5EAAC-6009-41AC-A9C3-28A3A6470A56}|AZMM.Server\\AZMM.Server.csproj|c:\\dev\\azmm-bbz\\azmm\\azmm.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20E5EAAC-6009-41AC-A9C3-28A3A6470A56}|AZMM.Server\\AZMM.Server.csproj|solutionrelative:azmm.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20E5EAAC-6009-41AC-A9C3-28A3A6470A56}|AZMM.Server\\AZMM.Server.csproj|c:\\dev\\azmm-bbz\\azmm\\azmm.server\\context\\azmmdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20E5EAAC-6009-41AC-A9C3-28A3A6470A56}|AZMM.Server\\AZMM.Server.csproj|solutionrelative:azmm.server\\context\\azmmdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20E5EAAC-6009-41AC-A9C3-28A3A6470A56}|AZMM.Server\\AZMM.Server.csproj|c:\\dev\\azmm-bbz\\azmm\\azmm.server\\azmm.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{20E5EAAC-6009-41AC-A9C3-28A3A6470A56}|AZMM.Server\\AZMM.Server.csproj|solutionrelative:azmm.server\\azmm.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\ruvex\\source\\repos\\AZMM\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\dev\\AZMM-BBZ\\AZMM\\AZMM.Server\\Program.cs",
-              "RelativeDocumentMoniker": "AZMM.Server\\Program.cs",
-              "ToolTip": "C:\\dev\\AZMM-BBZ\\AZMM\\AZMM.Server\\Program.cs",
-              "RelativeToolTip": "AZMM.Server\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T08:32:47.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AZMM.Server",
-              "DocumentMoniker": "C:\\dev\\AZMM-BBZ\\AZMM\\AZMM.Server\\AZMM.Server.csproj",
-              "RelativeDocumentMoniker": "AZMM.Server\\AZMM.Server.csproj",
-              "ToolTip": "C:\\dev\\AZMM-BBZ\\AZMM\\AZMM.Server\\AZMM.Server.csproj",
-              "RelativeToolTip": "AZMM.Server\\AZMM.Server.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-21T08:30:41.209Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AzmmDbContext.cs",
-              "DocumentMoniker": "C:\\dev\\AZMM-BBZ\\AZMM\\AZMM.Server\\Context\\AzmmDbContext.cs",
-              "RelativeDocumentMoniker": "AZMM.Server\\Context\\AzmmDbContext.cs",
-              "ToolTip": "C:\\dev\\AZMM-BBZ\\AZMM\\AZMM.Server\\Context\\AzmmDbContext.cs",
-              "RelativeToolTip": "AZMM.Server\\Context\\AzmmDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T08:30:05.945Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
