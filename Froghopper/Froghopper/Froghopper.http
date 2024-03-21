@@ -1,6 +1,0 @@
-@Froghopper_HostAddress = http://localhost:5036
-
-GET {{Froghopper_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
