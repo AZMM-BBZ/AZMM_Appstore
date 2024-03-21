@@ -1,0 +1,1 @@
+C:\dev\AZMM-BBZ\AZMM\azmm.client\obj\Debug\azmm.client.esproj.CoreCompileInputs.cache

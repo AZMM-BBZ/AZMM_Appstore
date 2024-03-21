@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "e5Ixw0nJ7fnML3BCUgIBcnDhvSjjOs7z9GoYqO8jw70=",
+  "Source": "AZMM.Server",
+  "BasePath": "_content/AZMM.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\dev\\AZMM-BBZ\\AZMM\\azmm.client\\azmm.client.esproj",
+      "Version": 2,
+      "Source": "azmm.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
