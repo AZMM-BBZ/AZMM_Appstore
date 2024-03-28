@@ -8,6 +8,12 @@ namespace Froghopper.Context
     public class AzmmDbContext : DbContext
     {
 
+        public AzmmDbContext()
+        {
+            this.Database.EnsureCreated();
+        }
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var applicationDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);

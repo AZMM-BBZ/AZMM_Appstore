@@ -1,5 +1,9 @@
-﻿namespace Froghopper.models
+﻿using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
+
+namespace Froghopper.models
 {
+    [PrimaryKey(nameof(Cid))]
     public class Company
     {
         public int Cid { get; set; }
