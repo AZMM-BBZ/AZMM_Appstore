@@ -1,4 +1,19 @@
-var builder = WebApplication.CreateBuilder(args);
+using Froghopper.Context;
+using Microsoft.EntityFrameworkCore;
+
+Directory.SetCurrentDirectory(AppContext.BaseDirectory);
+
+var options = new WebApplicationOptions
+{
+    Args = args,
+};
+
+var builder = WebApplication.CreateBuilder(options);
+
+
+
+builder.Logging.ClearProviders();
+builder.Logging.AddLog4Net();
 
 // Add services to the container.
 
@@ -9,6 +24,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+using (var context = new AzmmDbContext())
+{
+    context.Database.Migrate();
+}
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
