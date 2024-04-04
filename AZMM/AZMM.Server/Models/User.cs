@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AZMM.Server.Models;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Security.Cryptography;
@@ -9,8 +10,11 @@ namespace Froghopper.models
     public class User
     {
         public int Uid { get; set; }
-        public Person Person { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
         public List<App> OwendApps { get; set; } = new List<App>();
         public double MoneySpent { get; set; }
+        public Author Author { get; set; } = null; 
     }
 }

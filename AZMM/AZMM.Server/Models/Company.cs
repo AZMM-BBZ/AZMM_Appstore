@@ -9,9 +9,8 @@ namespace Froghopper.models
         public int Cid { get; set; }
         public string CompanyName { get; set; }
         public string CompanyDescription { get; set;}
-        public List<Authors> Employees { get; set; } = new List<Authors>();
+        public List<User> Employees { get; set; } = new List<User>();
         public List<App> CreatedApps { get; set; } = new List<App>();
-        public List<Company> SubCompanys { get; set; } = new List<Company>();
 
         public double GetTotalRevenue()
         {
@@ -20,10 +19,6 @@ namespace Froghopper.models
             {
                 var revenueMadeByApp = app.DownloadedByUsers.Count * app.Price;
                 revenue += revenueMadeByApp;
-            }
-            foreach (var company in SubCompanys)
-            {
-                revenue += company.GetTotalRevenue();
             }
             return revenue;
         }

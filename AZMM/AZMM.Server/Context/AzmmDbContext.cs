@@ -30,7 +30,6 @@ namespace Froghopper.Context
         }
 
         public DbSet<Company> Companies { get; set; }
-        public DbSet<Authors> Authors { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<App> App { get; set; }
     }
