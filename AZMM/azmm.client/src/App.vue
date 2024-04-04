@@ -1,5 +1,8 @@
-﻿<script setup lang="ts">
-
+﻿<script setup>
+    import { ref, computed } from 'vue'
+    import Login from './Login.vue'
+    import Registration from './Registration.vue'
+    import Game from './Game.vue'
 </script>
 
 <template>
@@ -15,14 +18,11 @@
 
       <main>
           <section class="site">
-              <nav>
-                  <a href="App.vue">Home</a>
-                  <a href="">Games</a>
-                  <a href="">Work</a>
-                  <a href="">Library</a>
-                  <a href="Login.vue">Login</a>
+              <a href="#/">Home</a> |
+              <a href="#/about">About</a> |
+              <a href="#/non-existent-path">Broken Link</a>
+              <component :is="currentView" />
 
-              </nav>
               <blockquote>
                   <img src="http://d.gr-assets.com/authors/1397426898p5/203714.jpg" align="left">“I invented nothing new. I simply assembled the discoveries of other men behind whom were centuries of work. Had I worked fifty or ten or even five years before, I would have failed. So it is with every new thing. Progress happens when all the factors that make for it are ready, and then it is inevitable. To teach that a comparatively few men are responsible for the greatest forward steps of mankind is the worst sort of nonsense.”
 
