@@ -15,6 +15,7 @@ namespace Froghopper.models
         public string Password { get; set; }
         public List<App> OwendApps { get; set; } = new List<App>();
         public double MoneySpent { get; set; }
+        public Role Role { get; set; }
         public Author Author { get; set; } = null; 
     }
 }
