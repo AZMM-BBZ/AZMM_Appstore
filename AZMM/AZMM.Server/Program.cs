@@ -1,3 +1,5 @@
+using AZMM.Server.Services;
+using AZMM.Server.Services.Interfaces;
 using Froghopper.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -43,7 +45,8 @@ builder.Logging.AddLog4Net();
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IAzmmDbContext, AzmmDbContext>();
+builder.Services.AddTransient<AzmmDbContext>();
+builder.Services.AddScoped<IUserService, UserService>();  
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

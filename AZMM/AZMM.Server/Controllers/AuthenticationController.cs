@@ -1,4 +1,5 @@
 ﻿using AZMM.Server.DtoModel;
+using AZMM.Server.Services.Interfaces;
 using Froghopper.models;
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
@@ -14,21 +15,21 @@ namespace AZMM.Server.Controllers
     [Route("[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private ILogger<AuthenticationController> _log;
-        private readonly IAuthenticationService _authenticationService;
+        private ILogger<AuthenticationController> _logger;
+        private readonly IUserService _userService;
         private readonly IConfiguration _configuration;
 
-        public AuthenticationController(ILogger<AuthenticationController> logger, IAuthenticationService authenticationService, IConfiguration configuration)
+        public AuthenticationController(ILogger<AuthenticationController> logger, IUserService userService, IConfiguration configuration)
         {
-            _log = logger;
-            _authenticationService = authenticationService;
+            _logger = logger;
+            _userService = userService;
             _configuration = configuration;
         }
 
         [HttpPost("authenticate")]
         public ActionResult<string> Authenticate([FromBody] AuthenticationRequestBody authenticationRequestBody)
         {
-            var user = new User { Uid = 1, Name="test", Password="test", Role=new Models.Role { Rid = 1, RoleName = "User"} };//_authenticationService.ValidateUserCredentials(authenticationRequestBody.Username, authenticationRequestBody.Password);
+            var user = _userService.GetUserFromDatabase(authenticationRequestBody.Username, authenticationRequestBody.Password);
             if (user == null)
             {
                 return Unauthorized();
@@ -53,7 +54,7 @@ namespace AZMM.Server.Controllers
                 signingCredentials);
 
             var tokenToReturn = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
-            _log.LogInformation("New JWT Token: " + tokenToReturn);
+            _logger.LogInformation("New JWT Token: " + tokenToReturn);
             return Ok(tokenToReturn);
         }
     }
