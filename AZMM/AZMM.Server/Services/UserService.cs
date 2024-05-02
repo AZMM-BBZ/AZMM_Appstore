@@ -1,4 +1,5 @@
-﻿using Froghopper.Context;
+﻿using AZMM.Server.Services.Interfaces;
+using Froghopper.Context;
 using Froghopper.models;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,19 @@ namespace AZMM.Server.Services
             _logger.LogDebug("Getting specific user from db");
             var user = _azmmDbContext.Users.Include(x => x.Role).FirstOrDefault(x => x.Name == username && x.Password == password);
             return user;
+        }
+
+        public void AddUser(User user)
+        {
+            _azmmDbContext.Users.Add(user);
+        }
+        public void UpdateUser(User user)
+        {
+            _azmmDbContext.Users.Update(user);
+        }
+        public void DeleteUser(User user)
+        {
+            _azmmDbContext.Users.Remove(user);
         }
     }
 }
