@@ -7,7 +7,7 @@ using System.Security.Permissions;
 
 namespace Froghopper.Context
 {
-    public class AzmmDbContext : DbContext
+    public class AzmmDbContext : DbContext, IAzmmDbContext
     {
 
         public AzmmDbContext()
@@ -40,8 +40,8 @@ namespace Froghopper.Context
             var adminRole = new Role { Rid = 3, RoleName = "ElevatedAuthor" };
             var elevatedAuthorRole = new Role { Rid = 4, RoleName = "Admin" };
 
-            var adminUser = new User { Uid = 1, Name = "admin", Password = "lauqssiws$09", Email = "test@test.com", RoleId=3 };
-            var user = new User { Uid = 2, Name = "user", Password = "user", Email = "test@test.com", RoleId = 1};
+            var adminUser = new User { Uid = 1, Name = "admin", Password = "lauqssiws$09", Email = "test@test.com", RoleId = 3 };
+            var user = new User { Uid = 2, Name = "user", Password = "user", Email = "test@test.com", RoleId = 1 };
 
 
             var notepad = new App { Aid = 1, Name = "Notepad++", Description = "Notepad", Category = Enums.Category.Work, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/69/Notepad%2B%2B_Logo.svg", Price = 0, Title = "Notenote" };
