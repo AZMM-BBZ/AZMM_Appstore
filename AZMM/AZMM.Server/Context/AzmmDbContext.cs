@@ -7,7 +7,7 @@ using System.Security.Permissions;
 
 namespace Froghopper.Context
 {
-    public class AzmmDbContext : DbContext, IAzmmDbContext
+    public class AzmmDbContext : DbContext
     {
 
         public AzmmDbContext()
