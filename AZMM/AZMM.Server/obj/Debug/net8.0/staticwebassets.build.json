@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "xzVer0kkutcJ+UXtdA4xfG8IG7+X7Gp68JHRZSwzaoc=",
+  "Hash": "ekEZOEERo4alxsSDZWWKqiQ97WftxUFaB9m0c5D/sO4=",
   "Source": "AZMM.Server",
   "BasePath": "_content/AZMM.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\ruvex\\source\\repos\\AZMM\\azmm.client\\azmm.client.esproj",
+      "Identity": "C:\\Users\\ruvex\\Documents\\GitHub\\AZMM_Appstore\\AZMM\\azmm.client\\azmm.client.esproj",
       "Version": 2,
       "Source": "azmm.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

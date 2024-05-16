@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ruvex\\source\\repos\\AZMM\\AZMM.Server\\AZMM.Server.csproj": {}
+    "C:\\Users\\ruvex\\Documents\\GitHub\\AZMM_Appstore\\AZMM\\AZMM.Server\\AZMM.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ruvex\\source\\repos\\AZMM\\AZMM.Server\\AZMM.Server.csproj": {
+    "C:\\Users\\ruvex\\Documents\\GitHub\\AZMM_Appstore\\AZMM\\AZMM.Server\\AZMM.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ruvex\\source\\repos\\AZMM\\AZMM.Server\\AZMM.Server.csproj",
+        "projectUniqueName": "C:\\Users\\ruvex\\Documents\\GitHub\\AZMM_Appstore\\AZMM\\AZMM.Server\\AZMM.Server.csproj",
         "projectName": "AZMM.Server",
-        "projectPath": "C:\\Users\\ruvex\\source\\repos\\AZMM\\AZMM.Server\\AZMM.Server.csproj",
+        "projectPath": "C:\\Users\\ruvex\\Documents\\GitHub\\AZMM_Appstore\\AZMM\\AZMM.Server\\AZMM.Server.csproj",
         "packagesPath": "C:\\Users\\ruvex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ruvex\\source\\repos\\AZMM\\AZMM.Server\\obj\\",
+        "outputPath": "C:\\Users\\ruvex\\Documents\\GitHub\\AZMM_Appstore\\AZMM\\AZMM.Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ruvex\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,13 +45,45 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "IdentityModel": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "Microsoft.AspNetCore.SpaProxy": {
               "target": "Package",
               "version": "[8.*-*, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Log4Net.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[110.2.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.16, )"
             }
           },
           "imports": [

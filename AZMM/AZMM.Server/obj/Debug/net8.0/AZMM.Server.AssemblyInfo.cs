@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AZMM.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3997036fcc1659957b3cb8889a9af5564124870c")]
 [assembly: System.Reflection.AssemblyProductAttribute("AZMM.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AZMM.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

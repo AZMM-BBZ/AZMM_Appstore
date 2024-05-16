@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AZMM.Server.Models;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Security.Cryptography;
 
 namespace Froghopper.models
 {
-    public class User : Person
+    [PrimaryKey(nameof(Uid))]
+    public class User
     {
         public int Uid { get; set; }
         public string Name { get; set; }
@@ -16,6 +18,6 @@ namespace Froghopper.models
         [ForeignKey("Role")]
         public int RoleId { get; set; }
         public Role Role { get; set; }
-        public Author? Author { get; set; } = null; 
+        public Author? Author { get; set; } = null;
     }
 }
