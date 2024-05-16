@@ -51,7 +51,6 @@ namespace Froghopper.Context
             modelBuilder.Entity<User>().HasData(adminUser, user);
         }
 
-        public DbSet<Company> Companies { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<App> App { get; set; }

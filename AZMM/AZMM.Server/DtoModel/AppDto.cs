@@ -11,7 +11,6 @@ namespace AZMM.Server.DtoModel
         public string Title { get; set; }
         public string ImageUrl { get; set; }
         public double Price { get; set; }
-        public Company MadeByCompany { get; set; }
         public List<User> MadeByAuthors { get; set; } = new List<User>();
         public Category Category { get; set; }
         public List<User> DownloadedByUsers { get; set; } = new List<User>();
