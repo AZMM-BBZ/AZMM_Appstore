@@ -11,4 +11,7 @@
   <ItemGroup>
     <None Remove="src\file.js" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\components\" />
+  </ItemGroup>
 </Project>
