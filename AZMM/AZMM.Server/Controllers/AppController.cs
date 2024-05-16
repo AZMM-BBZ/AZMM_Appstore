@@ -1,4 +1,5 @@
 ﻿using AZMM.Server.DtoModel;
+using AZMM.Server.Services.Interfaces;
 using Froghopper.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,12 @@ namespace AZMM.Server.Controllers
     [Route("[controller]")]
     public class AppController : ControllerBase
     {
+        private readonly IAppService _appService;
+
+        public AppController(IAppService appService)
+        {
+            _appService = appService;
+        }
 
         [HttpGet("downloadApp")]
         public HttpResponseMessage DownloadApp([FromQuery] int appId)

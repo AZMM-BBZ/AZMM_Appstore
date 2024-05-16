@@ -46,7 +46,9 @@ builder.Logging.AddLog4Net();
 builder.Services.AddControllers();
 
 builder.Services.AddTransient<AzmmDbContext>();
-builder.Services.AddScoped<IUserService, UserService>();  
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAppService, AppService>();
+builder.Services.AddHttpContextAccessor();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

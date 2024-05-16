@@ -1,4 +1,5 @@
 ﻿using AZMM.Server.DtoModel;
+using AZMM.Server.Services.Interfaces;
 using Froghopper.Context;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,13 @@ namespace AZMM.Server.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
+        private readonly IUserService _userService;
+        
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         [HttpGet("getCurrentUser")]
         public ActionResult<UserDto> GetCurrentUser()
         {

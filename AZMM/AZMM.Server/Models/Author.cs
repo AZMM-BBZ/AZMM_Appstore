@@ -8,7 +8,6 @@ namespace AZMM.Server.Models
     public class Author
     {
         public int Aid { get; set; }
-        public Company Company { get; set; } = null;
         public List<App> CreatedApps { get; set; } = new List<App>();
     }
 }
