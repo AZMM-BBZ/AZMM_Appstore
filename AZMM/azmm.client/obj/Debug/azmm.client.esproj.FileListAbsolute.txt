@@ -1,2 +1,0 @@
-C:\Users\ruvex\source\repos\AZMM\azmm.client\obj\Debug\azmm.client.esproj.CoreCompileInputs.cache
-C:\Users\ruvex\Documents\GitHub\AZMM_Appstore\AZMM\azmm.client\obj\Debug\azmm.client.esproj.CoreCompileInputs.cache

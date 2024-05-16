@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\AZMM.Server.props" />
-</Project>
