@@ -2,7 +2,9 @@
     import { ref, computed } from 'vue'
     import Login from './Login.vue'
     import Registration from './Registration.vue'
-    import Game from './Game.vue'
+    import Games from './Games.vue'
+    import Library from './Library.vue'
+    import Work from './Work.vue'
 </script>
 
 <template>
