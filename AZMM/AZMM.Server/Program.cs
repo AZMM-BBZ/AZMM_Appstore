@@ -2,8 +2,6 @@ using AZMM.Server.Services;
 using AZMM.Server.Services.Interfaces;
 using Froghopper.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 Directory.SetCurrentDirectory(AppContext.BaseDirectory);
 
@@ -14,28 +12,6 @@ var options = new WebApplicationOptions
 
 var builder = WebApplication.CreateBuilder(options);
 
-builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
-    {
-        var issuer = builder.Configuration["Authentication:Issuer"];
-        var audience = builder.Configuration["Authentication:Audience"];
-        var secret = builder.Configuration["Authentication:SecretForKey"];
-
-        if (issuer == null || audience == null || secret == null)
-        {
-            throw new InvalidOperationException("Authentication configuration values cannot be null.");
-        }
-
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = issuer,
-            ValidAudience = audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secret))
-        };
-    });
 
 
 builder.Logging.ClearProviders();
@@ -54,10 +30,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-using (var context = new AzmmDbContext())
-{
-    context.Database.Migrate();
-}
 app.UseDefaultFiles();
 app.UseStaticFiles();
 

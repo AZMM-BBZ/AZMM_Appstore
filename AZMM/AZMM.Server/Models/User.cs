@@ -18,6 +18,6 @@ namespace Froghopper.models
         [ForeignKey("Role")]
         public int RoleId { get; set; }
         public Role Role { get; set; }
-        public Author? Author { get; set; } = null; 
+        public Author? Author { get; set; } = null;
     }
 }
