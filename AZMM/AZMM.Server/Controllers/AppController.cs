@@ -11,7 +11,7 @@ using System.Net.Http.Headers;
 namespace AZMM.Server.Controllers
 {
     [ApiController]
-    [Authorize]
+    //[Authorize]
     [Route("[controller]")]
     public class AppController : ControllerBase
     {
@@ -23,14 +23,16 @@ namespace AZMM.Server.Controllers
         }
 
         [HttpGet("downloadApp")]
-        public HttpResponseMessage DownloadApp([FromQuery] int appId)
+        public HttpResponseMessage DownloadApp()
         {
             MemoryStream responseStream = new MemoryStream();
-            Stream fileStream = System.IO.File.Open("downloadFilePath", FileMode.Open);
+            //Stream fileStream = System.IO.File.Open("downloadFilePath", FileMode.Open);
+            var fileStream = _appService.GetAppFile(1);
 
             fileStream.CopyTo(responseStream);
             fileStream.Close();
             responseStream.Position = 0;
+
 
             HttpResponseMessage response = new HttpResponseMessage();
             response.StatusCode = HttpStatusCode.OK;

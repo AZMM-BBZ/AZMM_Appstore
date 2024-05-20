@@ -44,9 +44,12 @@ namespace Froghopper.Context
             var user = new User { Uid = 2, Name = "user", Password = "user", Email = "test@test.com", RoleId = 1 };
 
 
-            var notepad = new App { Aid = 1, Name = "Notepad++", Description = "Notepad", Category = Enums.Category.Work, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/69/Notepad%2B%2B_Logo.svg", Price = 0, Title = "Notenote" };
+            var notepad = new App { Aid = 1, Name = "Notepad++", Description = "Notepad", Category = Enums.Category.Work, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/69/Notepad%2B%2B_Logo.svg", Price = 0, FileName= "npp.8.5.8.Installer.x64" };
+            var vsCode = new App { Aid = 2, Name = "VS Code", Description = "Notepad", Category = Enums.Category.Work, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/69/Notepad%2B%2B_Logo.svg", Price = 0, FileName = "VSCodeUserSetup-x64-1.88.1" };
+            var manicDigger = new App { Aid = 3, Name = "Manic Digger", Description = "Notepad", Category = Enums.Category.Game, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/69/Notepad%2B%2B_Logo.svg", Price = 0, FileName = "ManicDigger2011-02-12Setup" };
+            var jp2 = new App { Aid = 4, Name = "JP2", Description = "Notepad", Category = Enums.Category.Work, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/69/Notepad%2B%2B_Logo.svg", Price = 0, FileName = "jp2setup" };
 
-            modelBuilder.Entity<App>().HasData(notepad);
+            modelBuilder.Entity<App>().HasData(notepad, vsCode, manicDigger, jp2);
             modelBuilder.Entity<Role>().HasData(adminRole, authorRole, userRole, elevatedAuthorRole);
             modelBuilder.Entity<User>().HasData(adminUser, user);
         }
