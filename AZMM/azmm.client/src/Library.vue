@@ -19,7 +19,7 @@
           </section>
 
           <section>
-              <p>This is just the filler for the Login page</p>
+              <p>This is just the filler for the Libary page</p>
           </section>
 
     </main>
