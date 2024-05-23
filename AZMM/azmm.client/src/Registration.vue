@@ -1,20 +1,9 @@
-﻿
-
-<template>
+﻿<template>
     <header>
 
     </header>
 
       <main>
-          <section class="site">
-              <nav>
-                  <a href="">Page</a>
-                  <a href="">Page</a>
-                  <a href="">Page</a>
-                  <a href="">Page</a>
-                  <a href="">Page</a>
-              </nav>
-          </section>
 
           <section>
               <p>This is just the filler for the Reg page</p>

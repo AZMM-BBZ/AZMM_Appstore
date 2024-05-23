@@ -1,6 +1,4 @@
-﻿
-
-<template>
+﻿<template>
     
     <div>
         <p>This is just the filler for the Home page</p>
