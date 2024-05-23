@@ -1,21 +1,24 @@
 ﻿<template>
-    <header>
-
-    </header>
-
-      <main>
-
-          <section>
-              <p>This is just the filler for the Reg page</p>
-          </section>
-
-    </main>
+    <form name="login-form">
+        <div class="mb-3">
+            <label for="username">Username: </label>
+            <input id="username" type="text" />
+        </div>
+        <div class="mb-3">
+            <label for="password">Password: </label>
+            <input id="password" type="password" />
+        </div>
+        <button class="btn btn-outline-dark" type="submit">
+            Login
+        </button>
+    </form>
 </template>
 
-<script setup lang="ts">
-
+<script>
+    export default {
+        name: 'LoginView',
+    }
 </script>
 
 <style scoped>
-
 </style>
