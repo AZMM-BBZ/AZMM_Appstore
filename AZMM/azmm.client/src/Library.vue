@@ -9,13 +9,7 @@
 
       <main>
           <section class="site">
-              <nav>
-                  <a href="">Page</a>
-                  <a href="">Page</a>
-                  <a href="">Page</a>
-                  <a href="">Page</a>
-                  <a href="">Page</a>
-              </nav>
+
           </section>
 
           <section>
