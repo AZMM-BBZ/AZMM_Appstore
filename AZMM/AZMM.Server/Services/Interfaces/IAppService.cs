@@ -8,7 +8,7 @@ namespace AZMM.Server.Services.Interfaces
         void AddApp(App app);
         bool BuyApp(App app);
         void DeleteApp(App app);
-        Stream GetAppFile(int appId);
+        string GetAppFile(int appId);
         List<App> GetAppsOwendByUser();
         List<App> GetAppsWithCategory(Category category);
         void UpdateApp(App app);

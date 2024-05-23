@@ -3,6 +3,9 @@ using Froghopper.Context;
 using Froghopper.Enums;
 using Froghopper.models;
 using System.IO.Compression;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace AZMM.Server.Services
 {
@@ -19,33 +22,12 @@ namespace AZMM.Server.Services
             _userService = userService;
         }
 
-        public Stream GetAppFile(int appId)
+        public string GetAppFile(int appId)
         {
             var app = _azmmDbContext.App.First(x => x.Aid == appId);
-
-
-            using (var zipFileStream = new FileStream(@"C:\temp\temp2.zip", FileMode.CreateNew))
-            {
-                using (var archive = new ZipArchive(zipFileStream, ZipArchiveMode.Create, true))
-                {
-
-                    using MemoryStream responseStream = new MemoryStream();
-                    Stream fileStream = System.IO.File.Open("C:\\ProgramData\\AZMM\\Metadata\\apps\\npp.8.5.8.Installer.x64.exe", FileMode.Open);
-
-                    var AppbyteArray = new byte[1024];
-                    using (BinaryReader br = new BinaryReader(fileStream))
-                    {
-                        var b = br.ReadBytes((int)fileStream.Length);
-                    }
-
- 
-                    var zipArchiveEntry = archive.CreateEntry(app.FileName, CompressionLevel.Fastest);
-                    var zipStream = zipArchiveEntry.Open();
-                    zipStream.Write(AppbyteArray, 0, AppbyteArray.Length);
-                    return zipStream;
-                }
-            }
+            return "C:\\ProgramData\\AZMM\\Metadata\\apps\\" + app.FileName + ".exe";
         }
+    
 
         public List<App> GetAppsWithCategory(Category category)
         {
