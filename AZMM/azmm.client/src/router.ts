@@ -4,12 +4,13 @@ import Registration from './Registration.vue'
 import Games from './Games.vue'
 import Library from './Library.vue'
 import Work from './Work.vue'
+import Home from './Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '',
-        name: 'login',
-        component: Login
+        path: '/home',
+        name: 'home',
+        component: Home
     },
     {
         path: '/login',
