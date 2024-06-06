@@ -49,3 +49,14 @@
     </footer>
 
 </template>
+
+<style>
+    footer {
+        background-color: cornflowerblue;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 25px;
+    }
+</style>
