@@ -43,4 +43,9 @@
     <main>
         <router-view></router-view>
     </main>
+
+    <footer>
+        <p>© AZMM-Appstore</p>
+    </footer>
+
 </template>
