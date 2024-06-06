@@ -67,11 +67,6 @@ namespace AZMM.Server.Controllers
                 // Return the zip file as a FileStreamResult
                 return File(memoryStream, "application/zip", "Executable.zip");
             }
-            catch(Exception e)
-            {
-                var test = e;
-                return null;
-            }
             finally
             {
                 // Clean up the temporary directory
