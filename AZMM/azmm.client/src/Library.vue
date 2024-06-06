@@ -3,14 +3,17 @@
 
     </header>
 
-      <main>
-          <section class="site">
+    <main>
 
-          </section>
+        <h1 style="color:cornflowerblue">Library</h1>
+        <hr />
 
-          <section>
-              <p>This is just the filler for the Libary page</p>
-          </section>
+        <section class="site">
+        </section>
+
+        <section>
+            <p>This is just the filler for the Libary page</p>
+        </section>
 
     </main>
 </template>
