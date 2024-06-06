@@ -3,6 +3,9 @@ using Froghopper.Context;
 using Froghopper.Enums;
 using Froghopper.models;
 using System.IO.Compression;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace AZMM.Server.Services
 {
@@ -19,10 +22,12 @@ namespace AZMM.Server.Services
             _userService = userService;
         }
 
-        public void GetAppFile()
+        public string GetAppFile(int appId)
         {
-
+            var app = _azmmDbContext.App.First(x => x.Aid == appId);
+            return "C:\\ProgramData\\AZMM\\Metadata\\apps\\" + app.FileName + ".exe";
         }
+    
 
         public List<App> GetAppsWithCategory(Category category)
         {
