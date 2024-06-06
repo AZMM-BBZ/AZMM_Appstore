@@ -1,4 +1,8 @@
 ﻿<template>
+
+    <h1 style="color:cornflowerblue">Registration</h1>
+    <hr />
+
     <form name="login-form">
         <div class="mb-3">
             <label for="username">Username: </label>

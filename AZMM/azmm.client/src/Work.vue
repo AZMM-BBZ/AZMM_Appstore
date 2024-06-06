@@ -1,6 +1,9 @@
 ﻿<template>
     <br />
 
+    <h1 style="color:cornflowerblue">Work</h1>
+    <hr />
+
     <div class="grid-container">
         <div class="container" style="width:200px;height:200px;">
             <div class="card">
