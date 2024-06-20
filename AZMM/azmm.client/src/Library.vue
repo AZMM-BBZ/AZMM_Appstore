@@ -1,27 +1,75 @@
 ﻿<template>
-    <header>
+    <br />
 
-    </header>
+    <h1 style="color:cornflowerblue">Libary</h1>
+    <hr />
 
-    <main>
+    <div class="grid-container">
+        <div class="container" style="width:200px;height:200px;" v-for="app in data.apps">
+            <div class="card">
+                <img :src="app.imageUrl" class="card-img-top" alt="notepad++ logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
 
-        <h1 style="color:cornflowerblue">Library</h1>
-        <hr />
+                <div class="card-body">
+                    <h5 class="card-title">{{app.name}}</h5>
+                    <button class="btn btn-primary" @click="downloadApp(app.aid)">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <section class="site">
-        </section>
-
-        <section>
-            <p>This is just the filler for the Libary page</p>
-        </section>
-
-    </main>
 </template>
 
 <script setup lang="ts">
 
+    import AppService from "@/services/AppService";
+    import { onMounted, onUpdated } from "vue";
+    import { reactive } from "vue";
+    import { useRouter } from "vue-router";
+
+    const service = new AppService();
+    const router = useRouter()
+
+    const data = reactive({
+        apps: [],
+    });
+
+    onMounted(() => {
+        service.getCurrentUser().then(x => {
+            if (!x) {
+                {
+                    router.push("/login")
+                }
+            }
+            else {
+                service.getAppsOfUser().then((ownedApps: any) => {
+                    console.log(ownedApps.data);
+                    data.apps = ownedApps.data
+                });
+            }
+        });
+    });
+
+    function downloadApp(appId: number) {
+        service.downloadApp(appId).then(x => {
+            console.log(x);
+        });
+    }
+
 </script>
 
 <style scoped>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 50px;
+        background-color: #ffffff;
+        padding: 50px;
+    }
 
+    .grid-container > div {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 0px solid black;
+        text-align: center;
+        font-size: 30px;
+    }
 </style>

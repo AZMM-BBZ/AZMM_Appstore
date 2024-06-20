@@ -5,6 +5,9 @@ import Games from './Games.vue'
 import Library from './Library.vue'
 import Work from './Work.vue'
 import Home from './Home.vue'
+import AppService from "@/services/AppService";
+
+const service = new AppService();
 
 const routes: Array<RouteRecordRaw> = [
     {

@@ -1,11 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
+import { saveAs } from 'file-saver';
 
 class AppService {
-    private baseUrl: string;
+
+    private baseUrl: string = "http://localhost:5096";
     private token: string | null;
 
-    constructor(baseUrl: string) {
-        this.baseUrl = baseUrl;
+    constructor() {
         this.token = null;
     }
 
@@ -27,20 +28,37 @@ class AppService {
         return axios.post<T>(`${this.baseUrl}${url}`, data);
     }
 
-    authenticateUser(name: string, password: string): Promise<AxiosResponse<string>> {
-        return this.post<string>('/Authentication/authenticate', { name, password })
+    authenticateUser(name: string, password: string): Promise<boolean> {
+        let authenticationRequestBody: AuthenticationRequestBody = {
+            username: name,
+            password: password
+        }
+        return this.post<string>('/Authentication/authenticate', authenticationRequestBody)
             .then(response => {
                 this.setAuthToken(response.data);
-                return response;
+                return true;
+            }).catch(error => {
+                return false;
             });
     }
 
-    getCurrentUser(): Promise<AxiosResponse<UserDto>> {
-        return this.get<UserDto>('/User/getCurrentUser');
+    getCurrentUser(): Promise<any> {
+        return this.get<UserDto>('/User/getCurrentUser')
+            .then(response => {
+                return response;
+            })
+            .catch(error => {
+                return null
+            });
     }
 
-    addUser(userDto: UserDto): Promise<AxiosResponse<void>> {
-        return this.post<void>('/User/addUser', userDto);
+    addUser(userDto: UserDto): Promise<boolean> {
+        return this.post<void>('/Authentication/addUser', userDto)
+        .then(response => {
+            return true;
+        }).catch(error => {
+            return false;
+        });;
     }
 
     updateUser(userDto: UserDto): Promise<AxiosResponse<void>> {
@@ -51,11 +69,29 @@ class AppService {
         return this.post<void>('/User/deleteUser', userDto);
     }
 
-    downloadApp(appId: string): Promise<AxiosResponse<Blob>> {
-        return this.get<Blob>('/App/downloadApp', { appId });
+    //downloadApp(appId: number): Promise<AxiosResponse<Blob>> {
+    //    return this.get<Blob>('/App/downloadApp', { appId });
+    //}
+
+    async downloadApp(appId: number) {
+        try {
+            const response = await axios.get('http://localhost:5096/App/downloadApp', {
+                params: { aid: appId }, // Set the appropriate `aid` parameter
+                responseType: 'blob' // Important for handling binary data
+            });
+
+            // Create a Blob from the response data
+            const blob = new Blob([response.data], { type: 'application/zip' });
+
+            // Use FileSaver.js to save the file
+            saveAs(blob, 'Executable.zip');
+        } catch (error) {
+            console.error('Error downloading the app:', error);
+        }
     }
 
-    getAppWithCategory(category: string): Promise<AxiosResponse<AppDto[]>> {
+    getAppWithCategory(category: Category): Promise<AxiosResponse<AppDto[]>> {
+
         return this.get<AppDto[]>('/App/getAppWithCategory', { category });
     }
 
@@ -84,9 +120,8 @@ class AppService {
 interface UserDto {
     uid: number,
     name: string,
-    email: string,
+    password: string,
     owenedApps: [AppDto],
-    moneySpent: number
 }
 
 interface AppDto {
@@ -99,6 +134,10 @@ interface AppDto {
     category: Category,
 }
 
+interface AuthenticationRequestBody {
+    username: string,
+    password: string
+}
 
 enum Category {
     None = 0,

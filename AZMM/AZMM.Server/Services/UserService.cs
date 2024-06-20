@@ -18,12 +18,11 @@ namespace AZMM.Server.Services
             _azmmDbContext = azmmDbContext;
             _httpContextAccessor = httpContextAccessor;
         }
-
         public User GetCurrentUser()
         {
             var userId = Int32.Parse(_httpContextAccessor.HttpContext.User.FindFirst("userid").Value);
             _logger.LogDebug("Getting User with id: " + userId);
-            return _azmmDbContext.Users.FirstOrDefault(x => x.Uid == userId);
+            return _azmmDbContext.Users.Include(x => x.OwendApps).FirstOrDefault(x => x.Uid == userId);
         }
         public List<User> GetUsersFromDatabase()
         {
@@ -34,27 +33,57 @@ namespace AZMM.Server.Services
         public User GetUserFromDatabase(string username, string password)
         {
             _logger.LogDebug("Getting specific user from db");
-            var user = _azmmDbContext.Users.Include(x => x.Role).FirstOrDefault(x => x.Name == username && x.Password == password);
+            var user = _azmmDbContext.Users.Include(x => x.OwendApps).FirstOrDefault(x => x.Name == username && x.Password == password);
             return user;
         }
 
-        public void AddUser(User user)
+        public bool AddUser(User user)
         {
-            _logger.LogDebug("Adding user:" + user.Name);
-            _azmmDbContext.Users.Add(user);
-            _azmmDbContext.SaveChanges();
+            try
+            {
+                if (GetUserFromDatabase(user.Name, user.Password) != null) return false;
+                _logger.LogDebug("Adding user:" + user.Name);
+                _azmmDbContext.Users.Add(user);
+                _azmmDbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return false;
+            }
+            
         }
-        public void UpdateUser(User user)
+        public bool UpdateUser(User user)
         {
-            _logger.LogDebug("Update user:" + user.Name);
-            _azmmDbContext.Users.Update(user);
-            _azmmDbContext.SaveChanges();
+            try
+            {
+                _logger.LogDebug("Update user:" + user.Name);
+                _azmmDbContext.Users.Update(user);
+                _azmmDbContext.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return false;
+            }
         }
-        public void DeleteUser(User user)
+        public bool DeleteUser(User user)
         {
-            _logger.LogDebug("Deleteing user:" + user.Name);
-            _azmmDbContext.Users.Remove(user);
-            _azmmDbContext.SaveChanges();
+            try
+            {
+                _logger.LogDebug("Deleteing user:" + user.Name);
+                _azmmDbContext.Users.Remove(user);
+                _azmmDbContext.SaveChanges();
+                return false;
+            }
+            catch(Exception ex) 
+            {
+                _logger.LogError(ex.Message);
+                return false;
+            }
+           
         }
     }
 }

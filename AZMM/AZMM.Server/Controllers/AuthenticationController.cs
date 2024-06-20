@@ -43,7 +43,7 @@ namespace AZMM.Server.Controllers
             claimsForToken.Add(new Claim("userid", user.Uid.ToString()));
             claimsForToken.Add(new Claim("username", user.Name));
             claimsForToken.Add(new Claim("password", user.Password));
-            claimsForToken.Add(new Claim(JwtClaimTypes.Role, user.Role.RoleName));
+            //claimsForToken.Add(new Claim(JwtClaimTypes.Role, user.Role.RoleName));
 
             var jwtSecurityToken = new JwtSecurityToken(
                 _configuration["Authentication:Issuer"],
@@ -56,6 +56,21 @@ namespace AZMM.Server.Controllers
             var tokenToReturn = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             _logger.LogInformation("New JWT Token: " + tokenToReturn);
             return Ok(tokenToReturn);
+        }
+
+        [HttpPost("addUser")]
+        public ActionResult AddUser([FromBody] UserDto newUser)
+        {
+            var user = new User { Name = newUser.Name, Password = newUser.Password};
+            var result = _userService.AddUser(user);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

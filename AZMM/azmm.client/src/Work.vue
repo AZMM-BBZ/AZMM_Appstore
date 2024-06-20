@@ -5,92 +5,13 @@
     <hr />
 
     <div class="grid-container">
-        <div class="container" style="width:200px;height:200px;">
+        <div class="container" style="width:200px;height:200px;" v-for="app in data.apps">
             <div class="card">
-                <img src="/src/assets/Notepad++_Logo.png" class="card-img-top" alt="notepad++ logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
+                <img :src="app.imageUrl" class="card-img-top" alt="notepad++ logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
 
                 <div class="card-body">
-                    <h5 class="card-title">Notepad++</h5>
-                    <a href="#" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="width:200px;height:200px;">
-            <div class="card">
-                <img src="/src/assets/ditto.png" class="card-img-top" alt="notepad++ logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
-
-                <div class="card-body">
-                    <h5 class="card-title">Ditto</h5>
-                    <a href="#" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="width:200px;height:200px;">
-            <div class="card">
-                <img src="/src/assets/filezilla.png" class="card-img-top" alt="notepad++ logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
-
-                <div class="card-body">
-                    <h5 class="card-title">File-Zilla</h5>
-                    <a href="#" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="width:200px;height:200px;">
-            <div class="card">
-                <img src="/src/assets/office.png" class="card-img-top" alt="notepad++ logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
-
-                <div class="card-body">
-                    <h5 class="card-title">Office</h5>
-                    <a href="#" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container" style="width:200px;height:200px;">
-            <div class="card">
-                <img src="/src/assets/visual-studio-code4470.jpg" class="card-img-top" alt="VS-Code logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
-
-                <div class="card-body">
-                    <h5 class="card-title">VS-Code</h5>
-                    <a href="#" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="container" style="width:200px;height:200px;">
-            <div class="card">
-                <img src="/src/assets/postman.png" class="card-img-top" alt="VS-Code logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
-
-                <div class="card-body">
-                    <h5 class="card-title">Postman</h5>
-                    <a href="#" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="width:200px;height:200px;">
-            <div class="card">
-                <img src="/src/assets/vs2022.jpg" class="card-img-top" alt="VS-Code logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
-
-                <div class="card-body">
-                    <h5 class="card-title">VS2022</h5>
-                    <a href="#" class="btn btn-primary">Download</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="width:200px;height:200px;">
-            <div class="card">
-                <img src="/src/assets/teams.jpg" class="card-img-top" alt="VS-Code logo" style="width:100px;height:100px;margin-left:36px;padding-top:5px">
-
-                <div class="card-body">
-                    <h5 class="card-title">Teams</h5>
-                    <a href="#" class="btn btn-primary">Download</a>
+                    <h5 class="card-title">{{app.name}}</h5>
+                    <button class="btn btn-primary" @click="downloadApp(app.aid)">Download</button>
                 </div>
             </div>
         </div>
@@ -99,7 +20,39 @@
 </template>
 
 <script setup lang="ts">
+    import AppService from "@/services/AppService";
+    import { onMounted, reactive } from "vue";
+    import { useRouter } from "vue-router";
 
+    const service = new AppService();
+    const router = useRouter()
+
+    const data = reactive({
+        apps: [],
+    });
+
+    onMounted(() => {
+        service.getCurrentUser().then(x => {
+            if (!x) {
+                {
+                    router.push("/login")
+                }
+            }
+            else {
+                service.getAppWithCategory(5).then((ownedApps: any) => {
+                    console.log(ownedApps.data);
+                    data.apps = ownedApps.data
+                });
+            }
+        });
+    });
+
+
+    function downloadApp(appId: number) {
+        service.downloadApp(appId).then(x => {
+            console.log(x);
+        });
+    }
 </script>
 
 <style scoped>

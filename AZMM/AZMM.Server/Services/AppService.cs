@@ -22,6 +22,12 @@ namespace AZMM.Server.Services
             _userService = userService;
         }
 
+        public App  GetApp(int appId)
+        {
+            return  _azmmDbContext.App.First(x => x.Aid == appId);
+        }
+
+
         public string GetAppFile(int appId)
         {
             var app = _azmmDbContext.App.First(x => x.Aid == appId);
@@ -37,7 +43,8 @@ namespace AZMM.Server.Services
 
         public List<App> GetAppsOwendByUser()
         {
-            return _userService.GetCurrentUser().OwendApps;
+            var user = _userService.GetCurrentUser();
+            return user.OwendApps;
         }
 
         public void AddApp(App app)

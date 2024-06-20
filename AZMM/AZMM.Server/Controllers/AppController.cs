@@ -4,6 +4,8 @@ using Froghopper.Context;
 using Froghopper.Enums;
 using Froghopper.models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
 using System.IO;
@@ -14,15 +16,18 @@ using System.Net.Http.Headers;
 namespace AZMM.Server.Controllers
 {
     [ApiController]
-    //[Authorize]
+    [Authorize]
+    //[EnableCors]
     [Route("[controller]")]
     public class AppController : ControllerBase
     {
         private readonly IAppService _appService;
+        private readonly IUserService _userService;
 
-        public AppController(IAppService appService)
+        public AppController(IAppService appService, IUserService userService)
         {
             _appService = appService;
+            _userService = userService;
         }
 
         [HttpGet("downloadApp")]
@@ -35,7 +40,7 @@ namespace AZMM.Server.Controllers
             // Ensure the exe file exists
             if (!System.IO.File.Exists(exeFilePath))
             {
-                //return NotFound("The specified executable file was not found.");
+                return NotFound("The specified executable file was not found.");
             }
 
             // Create a temporary directory to store the exe file for zipping
@@ -64,6 +69,11 @@ namespace AZMM.Server.Controllers
                 // Set the memory stream position to the beginning
                 memoryStream.Position = 0;
 
+                var user = _userService.GetCurrentUser();
+                var app = _appService.GetApp(aid);
+                user.OwendApps.Add(app);
+                _userService.UpdateUser(user);
+
                 // Return the zip file as a FileStreamResult
                 return File(memoryStream, "application/zip", "Executable.zip");
             }
@@ -78,40 +88,67 @@ namespace AZMM.Server.Controllers
         [HttpGet("getAppsOfUser")]
         public ActionResult<List<AppDto>> GetAppOfCurrentUser()
         {
-            return Ok();
+            var apps = _appService.GetAppsOwendByUser();
+            var appDtoList = new List<AppDto>();
+            foreach (var app in apps)
+            {
+                var appDto = new AppDto();
+                appDto.Aid = app.Aid;
+                appDto.Name = app.Name;
+                appDto.Description = app.Description;
+                appDto.ImageUrl = app.ImageUrl;
+                appDto.Category = app.Category;
+                appDtoList.Add(appDto);
+            }
+            return appDtoList;
         }
 
         [HttpGet("getAppWithCategory")]
         public ActionResult<List<AppDto>> GetAppWithCategory([FromQuery] Category category)
         {
-            return Ok();
+            var apps = _appService.GetAppsWithCategory(category);
+            var appDtoList = new List<AppDto>();
+            foreach (var app in apps)
+            {
+                var appDto = new AppDto();
+                appDto.Aid = app.Aid;
+                appDto.Name = app.Name;
+                appDto.Description = app.Description;
+                appDto.ImageUrl = app.ImageUrl;
+                appDto.Category = app.Category;
+                appDtoList.Add(appDto);
+            }
+            return appDtoList;
+
         }
 
         [HttpPost("purchaseApp")]
         public ActionResult PurchaseApp([FromBody] AppDto appDto)
         {
-            return Ok(true);
+            throw new NotImplementedException();
         }
 
         [Authorize(Roles = RoleConsts.ELEVATED_COMPANY_USERS)]
         [HttpPost("uploadApp")]
         public ActionResult UploadApp([FromBody] AppDto appDto)
         {
-            return Ok(true);
+            throw new NotImplementedException();
         }
 
         [Authorize(Roles = RoleConsts.ELEVATED_COMPANY_USERS)]
         [HttpDelete("deleteApp")]
         public ActionResult DeleteApp([FromBody] AppDto appDto)
         {
+            var app = new App { Aid = appDto.Aid};
+            _appService.DeleteApp(app);
             return Ok(true);
         }
 
         [Authorize(Roles = RoleConsts.ELEVATED_COMPANY_USERS)]
         [HttpDelete("updateApp")]
-        public ActionResult UpdateDeleteApp([FromBody] AppDto appDto)
+        public ActionResult UpdateApp([FromBody] AppDto appDto)
         {
-            return Ok(true);
+            throw new NotImplementedException();
         }
     }
 }
